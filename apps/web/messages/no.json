@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "kurs": "Våre kurs",
+    "om-oss": "Om oss",
+    "kontakt": "Kontakt",
+    "logg-inn": "Logg inn",
+    "meny": "Meny",
+    "kategorier": {
+      "norsk": "Norskopplæring",
+      "fagbrev": "Fagbrev",
+      "arbeidsliv": "Arbeidsliv",
+      "livsmestring": "Livsmestring"
+    }
+  },
+  "hero": {
+    "overskrift": "Lær noe nytt i dag.",
+    "underoverskrift": "Aftenskolen er en ideell stiftelse som hjelper voksne tilegne seg ny kompetanse. Vi tilbyr norskopplæring, fagopplæring og etterutdanning – siden 1952.",
+    "sok-placeholder": "Hva vil du lære?",
+    "sok-knapp": "Finn kurs",
+    "ki-laster": "Tenker...",
+    "ki-feil": "Noe gikk galt. Prøv igjen."
+  },
+  "om-aftenskolen": {
+    "ingress": "Vi hjelper voksne med å tilegne seg ny kompetanse",
+    "siden-1952": "Siden 1952",
+    "deltakere": "2000+ deltakere",
+    "godkjent": "Godkjent av HK Dir"
+  },
+  "kurs": {
+    "gratis": "Gratis",
+    "finansiert": "Finansiert av HK Dir",
+    "finansiert-imdi": "Finansiert av IMDI",
+    "fleksibel-oppstart": "Fleksibel oppstart",
+    "neste-oppstart": "Neste oppstart",
+    "meld-pa": "Meld deg på",
+    "venteliste": "Sett på venteliste",
+    "full": "Klassen er full",
+    "nettbasert": "Nettbasert",
+    "fysisk": "Fysisk",
+    "hybrid": "Hybrid",
+    "velg-klasse": "Velg klasse",
+    "ledige-plasser": "ledige plasser",
+    "ingen-klasser": "Ingen klasser tilgjengelig"
+  },
+  "footer": {
+    "tagline": "Norskopplæring, fagopplæring og etterutdanning",
+    "personvern": "Personvern",
+    "kontakt": "Kontakt",
+    "vilkaar": "Salgsvilkår",
+    "samarbeidspartnere": "Samarbeidspartnere",
+    "adresse": "Sørlandets kunnskapspark, Universitetsveien 19, 4630 Kristiansand",
+    "orgnr": "Org.nr.: 927 408 236"
+  },
+  "auth": {
+    "logg-inn-tittel": "Logg inn",
+    "registrer-tittel": "Opprett konto",
+    "epost": "E-post",
+    "passord": "Passord",
+    "bekreft-passord": "Bekreft passord",
+    "navn": "Fullt navn",
+    "logg-inn-knapp": "Logg inn",
+    "registrer-knapp": "Opprett konto",
+    "vipps": "Logg inn med Vipps",
+    "gdpr": "Jeg godtar vilkårene og personvernerklæringen",
+    "har-konto": "Har du allerede en konto?",
+    "mangler-konto": "Har du ikke konto ennå?",
+    "til-logg-inn": "Logg inn her",
+    "til-registrer": "Registrer deg her"
+  },
+  "kontakt": {
+    "overskrift": "Kontakt oss",
+    "ingress": "Vi svarer deg så snart vi kan",
+    "navn": "Navn",
+    "epost": "E-post",
+    "emne": "Emne",
+    "emne-generelt": "Generell henvendelse",
+    "emne-kurs": "Spørsmål om kurs",
+    "emne-faktura": "Faktura",
+    "emne-annet": "Annet",
+    "melding": "Melding",
+    "send": "Send melding",
+    "sendt": "Takk! Vi svarer deg snart.",
+    "feil": "Noe gikk galt. Prøv igjen."
+  },
+  "min-side": {
+    "overskrift": "Min side",
+    "mine-kurs": "Mine kurs",
+    "profil": "Min profil",
+    "ikke-logget-inn": "Du er ikke logget inn",
+    "logg-inn-lenke": "Logg inn for å se din side"
+  },
+  "om-oss": {
+    "overskrift": "Om Aftenskolen",
+    "ingress": "En ideell stiftelse som hjelper voksne med kompetanseheving siden 1952",
+    "historikk-tittel": "Vår historie",
+    "historikk": "Aftenskolen ble grunnlagt i 1952 og er en ideell stiftelse tilknyttet studieforbundsordningen. Vi arbeider for å gjøre utdanning tilgjengelig for alle voksne, uavhengig av bakgrunn og livssituasjon. Gjennom samarbeid med IMDI, HK Dir og Akademisk Studieforbund tilbyr vi finansiert opplæring til dem som trenger det mest.",
+    "verdier-tittel": "Våre verdier",
+    "verdi-1-tittel": "Tilgjengelighet",
+    "verdi-1": "Utdanning skal være tilgjengelig for alle",
+    "verdi-2-tittel": "Kvalitet",
+    "verdi-2": "Vi holder høy faglig standard i all undervisning",
+    "verdi-3-tittel": "Inkludering",
+    "verdi-3": "Vi legger til rette for deltakere med ulike forutsetninger",
+    "ansatte-tittel": "Vårt team",
+    "daglig-leder": "Daglig leder",
+    "samarbeidspartnere-lenke": "Se våre samarbeidspartnere"
+  },
+  "samarbeidspartnere": {
+    "overskrift": "Samarbeidspartnere",
+    "ingress": "Vi samarbeider med ledende organisasjoner for å gi deg den beste opplæringen"
+  },
+  "personvern": {
+    "overskrift": "Personvernerklæring"
+  },
+  "vilkaar": {
+    "overskrift": "Salgsvilkår"
+  }
+}

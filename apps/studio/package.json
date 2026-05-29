@@ -1,0 +1,21 @@
+{
+  "name": "@skillquest/studio",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sanity dev -p 3004",
+    "build": "sanity build",
+    "start": "sanity start",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "sanity": "^3.40.0",
+    "@sanity/vision": "^3.40.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.0.0"
+  }
+}

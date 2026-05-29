@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "kurs": "Our courses",
+    "om-oss": "About us",
+    "kontakt": "Contact",
+    "logg-inn": "Log in",
+    "meny": "Menu",
+    "kategorier": {
+      "norsk": "Norwegian language",
+      "fagbrev": "Vocational certificate",
+      "arbeidsliv": "Working life",
+      "livsmestring": "Life skills"
+    }
+  },
+  "hero": {
+    "overskrift": "Learn something new today.",
+    "underoverskrift": "Aftenskolen is a non-profit foundation that helps adults gain new competence. We offer Norwegian language training, vocational training and continuing education – since 1952.",
+    "sok-placeholder": "What do you want to learn?",
+    "sok-knapp": "Find courses",
+    "ki-laster": "Thinking...",
+    "ki-feil": "Something went wrong. Please try again."
+  },
+  "om-aftenskolen": {
+    "ingress": "We help adults gain new competence",
+    "siden-1952": "Since 1952",
+    "deltakere": "2000+ participants",
+    "godkjent": "Approved by HK Dir"
+  },
+  "kurs": {
+    "gratis": "Free",
+    "finansiert": "Funded by HK Dir",
+    "finansiert-imdi": "Funded by IMDI",
+    "fleksibel-oppstart": "Flexible start",
+    "neste-oppstart": "Next start",
+    "meld-pa": "Enrol",
+    "venteliste": "Join waitlist",
+    "full": "Class is full",
+    "nettbasert": "Online",
+    "fysisk": "In-person",
+    "hybrid": "Hybrid",
+    "velg-klasse": "Choose class",
+    "ledige-plasser": "spots available",
+    "ingen-klasser": "No classes available"
+  },
+  "footer": {
+    "tagline": "Norwegian language, vocational and continuing education",
+    "personvern": "Privacy policy",
+    "kontakt": "Contact",
+    "vilkaar": "Terms",
+    "samarbeidspartnere": "Partners",
+    "adresse": "Sørlandets kunnskapspark, Universitetsveien 19, 4630 Kristiansand",
+    "orgnr": "Org. no.: 927 408 236"
+  },
+  "auth": {
+    "logg-inn-tittel": "Log in",
+    "registrer-tittel": "Create account",
+    "epost": "Email",
+    "passord": "Password",
+    "bekreft-passord": "Confirm password",
+    "navn": "Full name",
+    "logg-inn-knapp": "Log in",
+    "registrer-knapp": "Create account",
+    "vipps": "Log in with Vipps",
+    "gdpr": "I accept the terms and privacy policy",
+    "har-konto": "Already have an account?",
+    "mangler-konto": "Don't have an account yet?",
+    "til-logg-inn": "Log in here",
+    "til-registrer": "Register here"
+  },
+  "kontakt": {
+    "overskrift": "Contact us",
+    "ingress": "We will get back to you as soon as possible",
+    "navn": "Name",
+    "epost": "Email",
+    "emne": "Subject",
+    "emne-generelt": "General enquiry",
+    "emne-kurs": "Course question",
+    "emne-faktura": "Invoice",
+    "emne-annet": "Other",
+    "melding": "Message",
+    "send": "Send message",
+    "sendt": "Thank you! We will get back to you shortly.",
+    "feil": "Something went wrong. Please try again."
+  },
+  "min-side": {
+    "overskrift": "My page",
+    "mine-kurs": "My courses",
+    "profil": "My profile",
+    "ikke-logget-inn": "You are not logged in",
+    "logg-inn-lenke": "Log in to see your page"
+  },
+  "om-oss": {
+    "overskrift": "About Aftenskolen",
+    "ingress": "A non-profit foundation helping adults upskill since 1952",
+    "historikk-tittel": "Our history",
+    "historikk": "Aftenskolen was founded in 1952 and is a non-profit foundation affiliated with the study association scheme. We work to make education accessible to all adults, regardless of background and life situation.",
+    "verdier-tittel": "Our values",
+    "verdi-1-tittel": "Accessibility",
+    "verdi-1": "Education should be accessible to everyone",
+    "verdi-2-tittel": "Quality",
+    "verdi-2": "We maintain high academic standards in all teaching",
+    "verdi-3-tittel": "Inclusion",
+    "verdi-3": "We accommodate participants with different prerequisites",
+    "ansatte-tittel": "Our team",
+    "daglig-leder": "Chief Executive Officer",
+    "samarbeidspartnere-lenke": "See our partners"
+  },
+  "samarbeidspartnere": {
+    "overskrift": "Partners",
+    "ingress": "We collaborate with leading organisations to give you the best training"
+  },
+  "personvern": {
+    "overskrift": "Privacy policy"
+  },
+  "vilkaar": {
+    "overskrift": "Terms and conditions"
+  }
+}

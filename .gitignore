@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# next.js
+.next
+out
+
+# turbo
+.turbo
+
+# build outputs
+dist
+
+# env files
+.env.local
+*.env.local
+.env.*.local
+
+# vercel
+.vercel
+
+# sanity
+.sanity
+
+# misc
+.DS_Store
+*.tsbuildinfo

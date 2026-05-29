@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1B3A5C;
+  --color-secondary: #2C6FAC;
+  --color-accent: #0D7377;
+  --color-bg: #F4F6F8;
+  --color-text: #1A1A2E;
+  --color-white: #FFFFFF;
+  --color-grey-border: #CCCCCC;
+  --radius: 8px;
+  --radius-sm: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
