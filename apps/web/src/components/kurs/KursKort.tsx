@@ -8,6 +8,7 @@ interface KursKortProps {
   slug: string;
   ingress: string;
   coverbilde?: { asset: { _ref: string }; alt?: string | undefined } | null | undefined;
+  coverbildeUrl?: string | undefined;
   kurstype: Kurstype;
   cefrNivaa: CefrNivaa;
   prisOere?: number | undefined;
@@ -56,6 +57,7 @@ export default function KursKort({
   slug,
   ingress,
   coverbilde,
+  coverbildeUrl,
   kurstype,
   cefrNivaa,
   prisOere = 0,
@@ -64,6 +66,8 @@ export default function KursKort({
   nesteOppstart,
   badge,
 }: KursKortProps) {
+  const bildeUrl = coverbildeUrl ?? (coverbilde ? '/api/placeholder' : null);
+
   return (
     <Link
       href={`/no/kurs/${slug}`}
@@ -71,10 +75,10 @@ export default function KursKort({
     >
       {/* Coverbilde */}
       <div className="relative aspect-video w-full overflow-hidden bg-[--color-bg]">
-        {coverbilde ? (
+        {bildeUrl ? (
           <Image
-            src={`/api/placeholder`}
-            alt={coverbilde.alt ?? tittel}
+            src={bildeUrl}
+            alt={coverbilde?.alt ?? tittel}
             fill
             className="object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -85,7 +89,7 @@ export default function KursKort({
           </div>
         )}
         {badge && (
-          <span className="absolute left-3 top-3 rounded-full bg-[--color-accent] px-2 py-0.5 text-xs font-semibold text-white">
+          <span className="absolute right-0 top-4 bg-[--color-accent] px-3 py-1 text-xs font-bold text-white shadow-sm after:absolute after:right-0 after:top-full after:border-4 after:border-transparent after:border-r-[--color-secondary] after:content-['']">
             {badge}
           </span>
         )}

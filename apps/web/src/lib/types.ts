@@ -27,6 +27,9 @@ export interface Kurs {
   hvaLaererDu?: string[];
   hvemPasser?: string;
   coverbilde?: SanityBilde | null;
+  coverbildeUrl?: string;
+  wordpressUrl?: string;
+  badge?: string;
   kurstype: Kurstype;
   cefrNivaa: CefrNivaa;
   forsidePrioritet?: number;

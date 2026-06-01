@@ -11,6 +11,7 @@ interface PaameldingsFlytProps {
   gratis: boolean;
   finansiering?: string | undefined;
   klasser: Klasse[];
+  wordpressUrl?: string | undefined;
 }
 
 function prisLabel(prisOere: number, gratis: boolean, finansiering?: string): string {
@@ -22,7 +23,7 @@ function prisLabel(prisOere: number, gratis: boolean, finansiering?: string): st
   return formatNok(prisOere);
 }
 
-export default function PaameldingsFlyt({ prisOere, gratis, finansiering, klasser }: PaameldingsFlytProps) {
+export default function PaameldingsFlyt({ prisOere, gratis, finansiering, klasser, wordpressUrl }: PaameldingsFlytProps) {
   const [valgtKlasse, setValgtKlasse] = useState(klasser[0]?.id ?? '');
   const valgt = klasser.find((k) => k.id === valgtKlasse);
   const erFull = valgt ? (valgt.ledigePlasser ?? 1) === 0 : false;
@@ -60,7 +61,21 @@ export default function PaameldingsFlyt({ prisOere, gratis, finansiering, klasse
       )}
 
       {/* CTA */}
-      {erFull ? (
+      {wordpressUrl && klasser.length === 0 ? (
+        <div>
+          <a
+            href={wordpressUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-full items-center justify-center rounded bg-[--color-primary] px-4 text-sm font-medium text-white hover:bg-[--color-secondary]"
+          >
+            Gå til kurs
+          </a>
+          <p className="mt-3 text-center text-xs text-gray-400">
+            Du sendes til aftenskolen.no for påmelding
+          </p>
+        </div>
+      ) : erFull ? (
         <div>
           <Button variant="outline" className="w-full" disabled>
             Klassen er full
@@ -81,9 +96,11 @@ export default function PaameldingsFlyt({ prisOere, gratis, finansiering, klasse
         </Link>
       )}
 
-      <p className="mt-3 text-center text-xs text-gray-400">
-        Du må logge inn for å melde deg på
-      </p>
+      {klasser.length > 0 && (
+        <p className="mt-3 text-center text-xs text-gray-400">
+          Du må logge inn for å melde deg på
+        </p>
+      )}
     </div>
   );
 }

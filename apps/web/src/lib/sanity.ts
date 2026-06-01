@@ -3,14 +3,15 @@ import imageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { Kurs, Sitat, Samarbeidspartner } from './types';
 import { mockKurs, mockSitater, mockSamarbeidspartnere } from './seed-data';
+import { hentAlleWordpressKurs, hentWordpressKurs } from './wordpress';
 
 const useMockData = process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true';
 
 export const sanityClient = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? 'placeholder',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
-  apiVersion: '2024-01-01',
-  useCdn: true,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'placeholder',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  apiVersion: '2026-05-01',
+  useCdn: false,
   ...(process.env.SANITY_API_TOKEN ? { token: process.env.SANITY_API_TOKEN } : {}),
 });
 
@@ -26,18 +27,18 @@ export async function hentForsideKurs(): Promise<Kurs[]> {
       .filter((k) => k.forsidePrioritet && k.forsidePrioritet > 0)
       .sort((a, b) => (a.forsidePrioritet ?? 9) - (b.forsidePrioritet ?? 9));
   }
-  // Sanity-spørring implementeres når CMS er konfigurert
-  return [];
+  const alle = await hentAlleWordpressKurs();
+  return alle.slice(0, 3);
 }
 
 export async function hentAlleKurs(): Promise<Kurs[]> {
   if (useMockData) return mockKurs;
-  return [];
+  return hentAlleWordpressKurs();
 }
 
 export async function hentKurs(slug: string): Promise<Kurs | null> {
   if (useMockData) return mockKurs.find((k) => k.slug === slug) ?? null;
-  return null;
+  return hentWordpressKurs(slug);
 }
 
 export async function hentSitater(): Promise<Sitat[]> {

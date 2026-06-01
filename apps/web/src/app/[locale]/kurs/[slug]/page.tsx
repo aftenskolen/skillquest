@@ -27,10 +27,10 @@ export default async function KursDetaljSide({
         <div className="lg:col-span-2">
           {/* Coverbilde */}
           <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-lg bg-[--color-bg]">
-            {kurs.coverbilde ? (
+            {(kurs.coverbildeUrl ?? kurs.coverbilde) ? (
               <Image
-                src="/api/placeholder"
-                alt={kurs.coverbilde.alt ?? kurs.tittel}
+                src={kurs.coverbildeUrl ?? '/api/placeholder'}
+                alt={kurs.coverbilde?.alt ?? kurs.tittel}
                 fill
                 className="object-cover"
                 priority
@@ -111,6 +111,7 @@ export default async function KursDetaljSide({
               gratis={kurs.gratis}
               finansiering={kurs.finansiering}
               klasser={kurs.klasser}
+              wordpressUrl={kurs.wordpressUrl}
             />
           </div>
         </div>

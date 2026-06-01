@@ -1,8 +1,8 @@
-import { hentForsideKurs } from '@/lib/sanity';
+import { hentKurser } from '@/lib/data';
 import KursKort from '@/components/kurs/KursKort';
 
 export default async function UtvalgtKurs() {
-  const kurs = await hentForsideKurs();
+  const kurs = await hentKurser(true);
 
   if (kurs.length === 0) return null;
 
@@ -20,6 +20,7 @@ export default async function UtvalgtKurs() {
               slug={k.slug}
               ingress={k.ingress}
               coverbilde={k.coverbilde}
+              coverbildeUrl={k.coverbildeUrl}
               kurstype={k.kurstype}
               cefrNivaa={k.cefrNivaa}
               prisOere={k.prisOere}
