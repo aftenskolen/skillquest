@@ -13,8 +13,8 @@
     }
   },
   "hero": {
-    "overskrift": "Lær noe nytt i dag.",
-    "underoverskrift": "Aftenskolen er en ideell stiftelse som hjelper voksne tilegne seg ny kompetanse. Vi tilbyr norskopplæring, fagopplæring og etterutdanning – siden 1952.",
+    "overskrift": "Lær å sy i dag.",
+    "underoverskrift": "Sykurs.no er laget for å hjelpe voksne til å forbedre sykunnskapene sine. Her finner du nettkurs og fysiske kurs i Kristiansand.",
     "sok-placeholder": "Hva vil du lære?",
     "sok-knapp": "Finn kurs",
     "ki-laster": "Tenker...",
@@ -43,11 +43,9 @@
     "ingen-klasser": "Ingen klasser tilgjengelig"
   },
   "footer": {
-    "tagline": "Norskopplæring, fagopplæring og etterutdanning",
+    "tagline": "Lær å sy i samarbeid med Aftenskolen",
     "personvern": "Personvern",
-    "kontakt": "Kontakt",
     "vilkaar": "Salgsvilkår",
-    "samarbeidspartnere": "Samarbeidspartnere",
     "adresse": "Sørlandets kunnskapspark, Universitetsveien 19, 4630 Kristiansand",
     "orgnr": "Org.nr.: 927 408 236"
   },

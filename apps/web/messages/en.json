@@ -13,8 +13,8 @@
     }
   },
   "hero": {
-    "overskrift": "Learn something new today.",
-    "underoverskrift": "Aftenskolen is a non-profit foundation that helps adults gain new competence. We offer Norwegian language training, vocational training and continuing education – since 1952.",
+    "overskrift": "Learn to sew today.",
+    "underoverskrift": "Sykurs.no is designed to help adults improve their sewing skills. Here you will find online courses and in-person courses in Kristiansand.",
     "sok-placeholder": "What do you want to learn?",
     "sok-knapp": "Find courses",
     "ki-laster": "Thinking...",
@@ -43,11 +43,9 @@
     "ingen-klasser": "No classes available"
   },
   "footer": {
-    "tagline": "Norwegian language, vocational and continuing education",
+    "tagline": "Learn to sew in collaboration with Aftenskolen",
     "personvern": "Privacy policy",
-    "kontakt": "Contact",
     "vilkaar": "Terms",
-    "samarbeidspartnere": "Partners",
     "adresse": "Sørlandets kunnskapspark, Universitetsveien 19, 4630 Kristiansand",
     "orgnr": "Org. no.: 927 408 236"
   },
