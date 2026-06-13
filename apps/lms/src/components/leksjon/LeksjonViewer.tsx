@@ -16,6 +16,7 @@ interface Props {
   kursSlug: string;
   leksjonId: string;
   nesteLeksjonHref?: string;
+  forrigeLeksjonHref?: string;
 }
 
 export function LeksjonViewer({
@@ -25,6 +26,7 @@ export function LeksjonViewer({
   leksjonFullfort: initialLeksjonFullfort,
   kursSlug,
   nesteLeksjonHref,
+  forrigeLeksjonHref,
 }: Props) {
   const [blokkStatus, setBlokkStatus] = useState(initiellBlokkStatus);
   const [leksjonFullfort, setLeksjonFullfort] = useState(initialLeksjonFullfort);
@@ -79,33 +81,40 @@ export function LeksjonViewer({
       })}
 
       {leksjonFullfort && (
-        <div className="rounded-xl border border-green-200 bg-green-50 p-6 text-center">
-          <p className="text-2xl">🎉</p>
-          <p className="mt-2 font-semibold text-green-700">Leksjon fullført!</p>
-          <div className="mt-4 flex flex-col items-center gap-3">
-            {nesteLeksjonHref ? (
-              <a
-                href={nesteLeksjonHref}
-                className="rounded-lg bg-[#1B3A5C] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
-              >
-                Neste leksjon →
-              </a>
-            ) : (
-              <a
-                href={`/kurs/${kursSlug}`}
-                className="rounded-lg bg-[#1B3A5C] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
-              >
-                Kurs fullført – tilbake til oversikten
-              </a>
-            )}
-            {nesteLeksjonHref && (
-              <a href={`/kurs/${kursSlug}`} className="text-sm text-gray-500 hover:underline">
-                Tilbake til kursoversikten
-              </a>
-            )}
-          </div>
+        <div className="rounded-xl border border-green-200 bg-green-50 px-6 py-4 text-center">
+          <p className="font-semibold text-green-700">✓ Leksjon fullført!</p>
         </div>
       )}
+
+      <div className="flex items-center justify-between border-t border-gray-200 pt-6">
+        <div>
+          {forrigeLeksjonHref && (
+            <a
+              href={forrigeLeksjonHref}
+              className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:border-[#1B3A5C] hover:text-[#1B3A5C] transition-colors"
+            >
+              ← Forrige leksjon
+            </a>
+          )}
+        </div>
+        <div>
+          {nesteLeksjonHref ? (
+            <a
+              href={nesteLeksjonHref}
+              className="flex items-center gap-2 rounded-lg bg-[#1B3A5C] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
+            >
+              Neste leksjon →
+            </a>
+          ) : (
+            <a
+              href={`/kurs/${kursSlug}`}
+              className="flex items-center gap-2 rounded-lg bg-[#1B3A5C] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
+            >
+              Tilbake til oversikten
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -56,8 +56,12 @@ export default async function LeksjonSide({ params }: Props) {
 
   const gjeldende = alleLeksjoner.indexOf(params.leksjonId);
   const nesteLeksjonId = gjeldende !== -1 ? alleLeksjoner[gjeldende + 1] : undefined;
+  const forrigeLeksjonId = gjeldende > 0 ? alleLeksjoner[gjeldende - 1] : undefined;
   const nesteLeksjonHref = nesteLeksjonId
     ? `/kurs/${params.slug}/leksjon/${nesteLeksjonId}`
+    : undefined;
+  const forrigeLeksjonHref = forrigeLeksjonId
+    ? `/kurs/${params.slug}/leksjon/${forrigeLeksjonId}`
     : undefined;
 
   const progresjonId = await hentEllerOpprettProgresjon(params.leksjonId, params.slug);
@@ -88,6 +92,7 @@ export default async function LeksjonSide({ params }: Props) {
         kursSlug={params.slug}
         leksjonId={params.leksjonId}
         {...(nesteLeksjonHref ? { nesteLeksjonHref } : {})}
+        {...(forrigeLeksjonHref ? { forrigeLeksjonHref } : {})}
       />
     </div>
   );
