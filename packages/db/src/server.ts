@@ -1,5 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "./types/index";
 
 export function createServerClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -10,7 +9,7 @@ export function createServerClient() {
         "createServerClient() er kun for server-side kode (API-ruter, server actions, admin-app)."
     );
   }
-  return createClient<Database>(url, key, {
+  return createClient(url, key, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
