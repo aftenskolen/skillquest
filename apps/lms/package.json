@@ -1,5 +1,5 @@
 {
-  "name": "@skillquest/lms",
+  "name": "@novolms/lms",
   "version": "0.0.1",
   "scripts": {
     "dev": "next dev -p 3001",
@@ -9,11 +9,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@skillquest/ui": "workspace:*",
-    "@skillquest/db": "workspace:*",
-    "@skillquest/auth": "workspace:*",
-    "@skillquest/utils": "workspace:*",
-    "@supabase/ssr": "^0.5.0",
+    "@novolms/ui": "workspace:*",
+    "@novolms/db": "workspace:*",
+    "@novolms/auth": "workspace:*",
+    "@novolms/utils": "workspace:*",
+    "@supabase/ssr": "^0.12.0",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"

@@ -7,7 +7,7 @@ import { Label } from "./Label";
 
 interface RegisterFormProps {
   /**
-   * Server action som kaller @skillquest/auth registrerBruker().
+   * Server action som kaller @novolms/auth registrerBruker().
    * Eksempel i Next.js app:
    *   async function registrerAction(navn: string, epost: string, passord: string) {
    *     "use server";

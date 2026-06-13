@@ -1,4 +1,4 @@
-# Skillquest
+# novolms
 
 Læringsplattform for Aftenskolen.
 
@@ -50,7 +50,7 @@ skillquest/
 
 | Pakke | Beskrivelse |
 |-------|-------------|
-| `@skillquest/ui` | Delt komponentbibliotek (shadcn/ui-basert) |
-| `@skillquest/db` | Supabase-klient og TypeScript-typer |
-| `@skillquest/auth` | NextAuth.js-konfigurasjon |
-| `@skillquest/utils` | Delte hjelpefunksjoner |
+| `@novolms/ui` | Delt komponentbibliotek (shadcn/ui-basert) |
+| `@novolms/db` | Supabase-klient og TypeScript-typer |
+| `@novolms/auth` | NextAuth.js-konfigurasjon |
+| `@novolms/utils` | Delte hjelpefunksjoner |

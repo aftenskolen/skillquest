@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Badge } from '@skillquest/ui';
+import { Badge } from '@novolms/ui';
 import { hentKurs } from '@/lib/sanity';
 import PaameldingsFlyt from '@/components/kurs/PaameldingsFlyt';
 

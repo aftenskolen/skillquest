@@ -1,8 +1,7 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { hentInnloggetBruker } from "@skillquest/auth";
-import { createServerClient } from "@skillquest/db/server";
-import type { InnholdsBlokk } from "@skillquest/db/types";
+import { notFound, redirect } from "next/navigation";
+import { hentInnloggetBruker } from "@novolms/auth";
+import { createServerClient } from "@novolms/db/server";
+import type { InnholdsBlokk } from "@novolms/db/types";
 import { LeksjonViewer } from "@/components/leksjon/LeksjonViewer";
 import { hentEllerOpprettProgresjon } from "./actions";
 
@@ -11,7 +10,8 @@ interface Props {
 }
 
 export default async function LeksjonSide({ params }: Props) {
-  const { bruker } = (await hentInnloggetBruker())!;
+  const brukerData = await hentInnloggetBruker();
+  if (!brukerData) redirect("/auth/logg-inn");
   const db = createServerClient();
 
   const { data: leksjon } = await db
@@ -34,16 +34,12 @@ export default async function LeksjonSide({ params }: Props) {
   const beskrivelse = leksjon.beskrivelse as { no: string } | null;
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-12">
-      <Link href={`/kurs/${params.slug}`} className="text-sm text-blue-600 hover:underline">
-        ← Tilbake til kurset
-      </Link>
-
-      <div className="mt-4 mb-8">
+    <div className="mx-auto max-w-2xl px-8 py-12">
+      <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#1B3A5C]">{tittel}</h1>
         {beskrivelse && <p className="mt-2 text-gray-500">{beskrivelse.no}</p>}
         {leksjon.estimert_tid_min && (
-          <p className="mt-1 text-xs text-gray-400">{leksjon.estimert_tid_min} minutter</p>
+          <p className="mt-1 text-xs text-gray-400">{leksjon.estimert_tid_min as number} minutter</p>
         )}
       </div>
 
@@ -55,6 +51,6 @@ export default async function LeksjonSide({ params }: Props) {
         kursSlug={params.slug}
         leksjonId={params.leksjonId}
       />
-    </main>
+    </div>
   );
 }

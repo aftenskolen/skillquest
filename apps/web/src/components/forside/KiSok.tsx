@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { Input, Button } from '@skillquest/ui';
+import { Input, Button } from '@novolms/ui';
 import { Search } from 'lucide-react';
 
 export default function KiSok() {

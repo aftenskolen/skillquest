@@ -1,6 +1,6 @@
 "use client";
 
-import type { TekstBlokkData } from "@skillquest/db/types";
+import type { TekstBlokkData } from "@novolms/db/types";
 
 interface Props {
   data: TekstBlokkData;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Badge } from '@skillquest/ui';
+import { Badge } from '@novolms/ui';
 import type { Kurstype, CefrNivaa } from '@/lib/types';
 
 interface KursKortProps {
@@ -19,19 +19,13 @@ interface KursKortProps {
 }
 
 const kursFarger: Record<Kurstype, 'teal' | 'blue' | 'purple' | 'green' | 'grey'> = {
-  norsk: 'teal',
-  fagbrev: 'blue',
-  arbeidsliv: 'purple',
-  livsmestring: 'green',
-  annet: 'grey',
+  nettkurs: 'teal',
+  fysisk: 'blue',
 };
 
 const kursLabeler: Record<Kurstype, string> = {
-  norsk: 'Norsk',
-  fagbrev: 'Fagbrev',
-  arbeidsliv: 'Arbeidsliv',
-  livsmestring: 'Livsmestring',
-  annet: 'Annet',
+  nettkurs: 'Nettkurs',
+  fysisk: 'Fysisk kurs',
 };
 
 function formaterPris(prisOere: number, gratis: boolean, finansiering?: string): string {

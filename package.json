@@ -1,5 +1,5 @@
 {
-  "name": "skillquest",
+  "name": "novolms",
   "private": true,
   "packageManager": "pnpm@11.4.0",
   "scripts": {
@@ -7,9 +7,9 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
-    "dev:web": "turbo run dev --filter=@skillquest/web",
-    "dev:lms": "turbo run dev --filter=@skillquest/lms",
-    "dev:admin": "turbo run dev --filter=@skillquest/admin"
+    "dev:web": "turbo run dev --filter=@novolms/web",
+    "dev:lms": "turbo run dev --filter=@novolms/lms",
+    "dev:admin": "turbo run dev --filter=@novolms/admin"
   },
   "devDependencies": {
     "turbo": "latest",

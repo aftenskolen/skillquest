@@ -1,4 +1,4 @@
-import { LoginForm } from "@skillquest/ui";
+import { LoginForm } from "@novolms/ui";
 import { loggInnAction } from "./actions";
 
 export default function LoggInnPage() {

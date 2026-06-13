@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { loggInn } from "@skillquest/auth";
+import { loggInn } from "@novolms/auth";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { Label } from "./Label";

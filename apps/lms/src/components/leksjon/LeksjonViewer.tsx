@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import type { InnholdsBlokk, TekstBlokkData, VideoBlokkData, MultipleChoiceBlokkData } from "@skillquest/db/types";
+import type { InnholdsBlokk, TekstBlokkData, VideoBlokkData, MultipleChoiceBlokkData } from "@novolms/db/types";
 import { BlokkTekst } from "./BlokkTekst";
 import { BlokkVideo } from "./BlokkVideo";
 import { BlokkMultipleChoice } from "./BlokkMultipleChoice";

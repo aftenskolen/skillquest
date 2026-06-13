@@ -1,4 +1,4 @@
-import { hentInnloggetBruker } from "@skillquest/auth";
+import { hentInnloggetBruker } from "@novolms/auth";
 
 export default async function Page() {
   const { bruker, roller } = (await hentInnloggetBruker())!;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { MultipleChoiceBlokkData } from "@skillquest/db/types";
+import type { MultipleChoiceBlokkData } from "@novolms/db/types";
 
 interface Props {
   data: MultipleChoiceBlokkData;

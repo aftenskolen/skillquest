@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { hentInnloggetBruker } from "@skillquest/auth";
-import { createServerClient } from "@skillquest/db/server";
+import { redirect } from "next/navigation";
+import { hentInnloggetBruker } from "@novolms/auth";
+import { createServerClient } from "@novolms/db/server";
 
 export default async function DashboardPage() {
-  const { bruker } = (await hentInnloggetBruker())!;
+  const brukerData = await hentInnloggetBruker();
+  if (!brukerData) redirect("/auth/logg-inn");
+  const { bruker } = brukerData;
   const db = createServerClient();
 
   const { data: paameldinger } = await db

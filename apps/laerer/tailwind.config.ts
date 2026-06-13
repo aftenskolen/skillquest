@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import baseConfig from "@skillquest/ui/tailwind.config";
+import baseConfig from "@novolms/ui/tailwind.config";
 
 const config: Config = {
   ...baseConfig,

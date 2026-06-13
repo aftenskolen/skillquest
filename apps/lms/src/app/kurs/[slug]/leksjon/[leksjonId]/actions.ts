@@ -1,7 +1,7 @@
 "use server";
 
-import { hentInnloggetBruker } from "@skillquest/auth";
-import { createServerClient } from "@skillquest/db/server";
+import { hentInnloggetBruker } from "@novolms/auth";
+import { createServerClient } from "@novolms/db/server";
 
 export async function oppdaterBlokkStatus(
   progresjonId: string,

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Input, Label, Button } from '@skillquest/ui';
+import { Input, Label, Button } from '@novolms/ui';
 
 interface Skjema {
   navn: string;

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { loggUt } from "@skillquest/auth";
-import type { Bruker } from "@skillquest/db/types";
+import { loggUt } from "@novolms/auth";
+import type { Bruker } from "@novolms/db/types";
 
 interface UserMenuProps {
   /**
-   * Brukerdata hentet server-side via hentInnloggetBruker() fra @skillquest/auth.
+   * Brukerdata hentet server-side via hentInnloggetBruker() fra @novolms/auth.
    * Sendes som prop fra parent server component.
    */
   bruker: Pick<Bruker, "navn" | "epost" | "profilbilde_url">

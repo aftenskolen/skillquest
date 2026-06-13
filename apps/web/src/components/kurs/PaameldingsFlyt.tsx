@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@skillquest/ui';
+import { Button } from '@novolms/ui';
 import type { Klasse } from '@/lib/types';
-import { formatNok } from '@skillquest/utils';
+import { formatNok } from '@novolms/utils';
 
 interface PaameldingsFlytProps {
   prisOere: number;

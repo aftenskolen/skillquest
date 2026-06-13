@@ -1,4 +1,4 @@
-import { RegisterForm } from "@skillquest/ui";
+import { RegisterForm } from "@novolms/ui";
 import { registrerAction } from "./actions";
 
 export default function RegistrerPage() {

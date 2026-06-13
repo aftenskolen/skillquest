@@ -15,10 +15,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@skillquest/ui": ["../../packages/ui/src"],
-      "@skillquest/db": ["../../packages/db/src"],
-      "@skillquest/auth": ["../../packages/auth/src"],
-      "@skillquest/utils": ["../../packages/utils/src"]
+      "@novolms/ui": ["../../packages/ui/src"],
+      "@novolms/db": ["../../packages/db/src"],
+      "@novolms/auth": ["../../packages/auth/src"],
+      "@novolms/utils": ["../../packages/utils/src"]
     }
   },
   "exclude": ["node_modules"]

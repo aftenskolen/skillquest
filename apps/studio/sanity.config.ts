@@ -5,7 +5,7 @@ import { schemaTypes } from "./schemas";
 
 export default defineConfig({
   name: "skillquest-studio",
-  title: "Skillquest",
+  title: "novolms",
   projectId: process.env.SANITY_STUDIO_PROJECT_ID ?? "",
   dataset: process.env.SANITY_STUDIO_DATASET ?? "production",
   plugins: [

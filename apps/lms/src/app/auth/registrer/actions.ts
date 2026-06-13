@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { registrerBruker } from "@skillquest/auth";
+import { registrerBruker } from "@novolms/auth";
 import { createClient } from "@/lib/supabase/server";
 
 export async function registrerAction(

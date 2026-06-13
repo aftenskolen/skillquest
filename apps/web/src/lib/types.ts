@@ -1,4 +1,4 @@
-export type Kurstype = 'norsk' | 'fagbrev' | 'arbeidsliv' | 'livsmestring' | 'annet';
+export type Kurstype = 'nettkurs' | 'fysisk';
 export type CefrNivaa = 'A1' | 'A2' | 'B1' | 'B2' | 'ingen';
 export type UndervisningsType = 'fysisk' | 'nettbasert' | 'hybrid';
 export type Finansiering = 'imdi' | 'hkdir' | 'ingen';

@@ -1,8 +1,8 @@
-import "@skillquest/ui/globals.css";
+import "@novolms/ui/globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Skillquest Lærerportal",
+  title: "novolms Lærerportal",
   description: "Lærerportal",
 };
 

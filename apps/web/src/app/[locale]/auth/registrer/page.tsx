@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Input, Label, Button } from '@skillquest/ui';
+import { Input, Label, Button } from '@novolms/ui';
 
 export default function Registrer() {
   const t = useTranslations('auth');

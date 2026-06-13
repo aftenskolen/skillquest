@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { VideoBlokkData } from "@skillquest/db/types";
+import type { VideoBlokkData } from "@novolms/db/types";
 
 interface Props {
   data: VideoBlokkData;

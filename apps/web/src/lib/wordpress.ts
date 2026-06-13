@@ -31,12 +31,9 @@ interface WcProduct {
 // ── Mapping-tabeller ──────────────────────────────────────────────────────────
 
 const KATEGORI_MAP: Record<string, Kurstype> = {
-  norsk: 'norsk',
-  norskkurs: 'norsk',
-  fagopplaering: 'fagbrev',
-  fagbrev: 'fagbrev',
-  arbeidsliv: 'arbeidsliv',
-  livsmestring: 'livsmestring',
+  fysisk: 'fysisk',
+  'fysiske-kurs': 'fysisk',
+  'physical': 'fysisk',
 };
 
 const METHOD_MAP: Record<string, UndervisningsType> = {
@@ -97,7 +94,7 @@ function mapWcTilKurs(product: WcProduct): Kurs {
     catSlugs.reduce<Kurstype | undefined>(
       (found, slug) => found ?? KATEGORI_MAP[slug],
       undefined,
-    ) ?? 'annet';
+    ) ?? 'nettkurs';
 
   // CEFR fra produktnavn
   const tittel = product.name;

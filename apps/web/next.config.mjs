@@ -5,10 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const config = {
   transpilePackages: [
-    "@skillquest/ui",
-    "@skillquest/db",
-    "@skillquest/auth",
-    "@skillquest/utils"
+    "@novolms/ui",
+    "@novolms/db",
+    "@novolms/auth",
+    "@novolms/utils"
   ],
   images: {
     remotePatterns: [
