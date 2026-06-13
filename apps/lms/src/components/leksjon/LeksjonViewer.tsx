@@ -15,6 +15,7 @@ interface Props {
   leksjonFullfort: boolean;
   kursSlug: string;
   leksjonId: string;
+  nesteLeksjonHref?: string;
 }
 
 export function LeksjonViewer({
@@ -23,6 +24,7 @@ export function LeksjonViewer({
   initiellBlokkStatus,
   leksjonFullfort: initialLeksjonFullfort,
   kursSlug,
+  nesteLeksjonHref,
 }: Props) {
   const [blokkStatus, setBlokkStatus] = useState(initiellBlokkStatus);
   const [leksjonFullfort, setLeksjonFullfort] = useState(initialLeksjonFullfort);
@@ -80,12 +82,28 @@ export function LeksjonViewer({
         <div className="rounded-xl border border-green-200 bg-green-50 p-6 text-center">
           <p className="text-2xl">🎉</p>
           <p className="mt-2 font-semibold text-green-700">Leksjon fullført!</p>
-          <a
-            href={`/kurs/${kursSlug}`}
-            className="mt-4 inline-block rounded-lg bg-[#1B3A5C] px-6 py-2 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
-          >
-            Tilbake til kursoversikten
-          </a>
+          <div className="mt-4 flex flex-col items-center gap-3">
+            {nesteLeksjonHref ? (
+              <a
+                href={nesteLeksjonHref}
+                className="rounded-lg bg-[#1B3A5C] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
+              >
+                Neste leksjon →
+              </a>
+            ) : (
+              <a
+                href={`/kurs/${kursSlug}`}
+                className="rounded-lg bg-[#1B3A5C] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#162f4a] transition-colors"
+              >
+                Kurs fullført – tilbake til oversikten
+              </a>
+            )}
+            {nesteLeksjonHref && (
+              <a href={`/kurs/${kursSlug}`} className="text-sm text-gray-500 hover:underline">
+                Tilbake til kursoversikten
+              </a>
+            )}
+          </div>
         </div>
       )}
     </div>

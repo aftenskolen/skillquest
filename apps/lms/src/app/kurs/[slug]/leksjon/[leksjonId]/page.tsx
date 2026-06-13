@@ -14,14 +14,51 @@ export default async function LeksjonSide({ params }: Props) {
   if (!brukerData) redirect("/auth/logg-inn");
   const db = createServerClient();
 
-  const { data: leksjon } = await db
-    .from("innhold_leksjon")
-    .select("*")
-    .eq("id", params.leksjonId)
-    .eq("status", "publisert")
-    .single();
+  const [{ data: leksjon }, { data: kurs }] = await Promise.all([
+    db.from("innhold_leksjon")
+      .select("*")
+      .eq("id", params.leksjonId)
+      .eq("status", "publisert")
+      .single(),
+    db.from("kurs")
+      .select(`
+        kurs_modul_kobling (
+          rekkefolge,
+          innhold_modul (
+            id,
+            modul_leksjon_kobling (
+              rekkefolge,
+              innhold_leksjon ( id, status )
+            )
+          )
+        )
+      `)
+      .eq("slug", params.slug)
+      .single(),
+  ]);
 
   if (!leksjon) notFound();
+
+  // Flatten all published lessons in curriculum order
+  type RawKmk = { rekkefolge: number; innhold_modul: unknown };
+  type RawModul = { modul_leksjon_kobling: Array<{ rekkefolge: number; innhold_leksjon: { id: string; status: string } | null }> };
+
+  const alleLeksjoner = [...((kurs as { kurs_modul_kobling: RawKmk[] } | null)?.kurs_modul_kobling ?? [])]
+    .sort((a, b) => a.rekkefolge - b.rekkefolge)
+    .flatMap((kmk) => {
+      const modul = kmk.innhold_modul as unknown as RawModul | null;
+      return [...(modul?.modul_leksjon_kobling ?? [])]
+        .sort((a, b) => a.rekkefolge - b.rekkefolge)
+        .flatMap((mlk) =>
+          mlk.innhold_leksjon?.status === "publisert" ? [mlk.innhold_leksjon.id] : []
+        );
+    });
+
+  const gjeldende = alleLeksjoner.indexOf(params.leksjonId);
+  const nesteLeksjonId = gjeldende !== -1 ? alleLeksjoner[gjeldende + 1] : undefined;
+  const nesteLeksjonHref = nesteLeksjonId
+    ? `/kurs/${params.slug}/leksjon/${nesteLeksjonId}`
+    : undefined;
 
   const progresjonId = await hentEllerOpprettProgresjon(params.leksjonId, params.slug);
 
@@ -50,6 +87,7 @@ export default async function LeksjonSide({ params }: Props) {
         leksjonFullfort={progresjon?.status === "fullfort"}
         kursSlug={params.slug}
         leksjonId={params.leksjonId}
+        {...(nesteLeksjonHref ? { nesteLeksjonHref } : {})}
       />
     </div>
   );
