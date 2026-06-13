@@ -7,12 +7,14 @@ import { Input } from "./Input";
 import { Label } from "./Label";
 
 interface LoginFormProps {
+  loggInnAction?: (epost: string, passord: string) => Promise<{ error?: string }>;
   onSuccess?: () => void;
   registrerUrl?: string;
   glemtPassordUrl?: string;
 }
 
 export function LoginForm({
+  loggInnAction,
   onSuccess,
   registrerUrl = "/auth/registrer",
   glemtPassordUrl = "/auth/glemt-passord",
@@ -27,7 +29,15 @@ export function LoginForm({
     setFeil(null);
     setLaster(true);
     try {
-      await loggInn(epost, passord);
+      if (loggInnAction) {
+        const result = await loggInnAction(epost, passord);
+        if (result?.error) {
+          setFeil(result.error);
+          return;
+        }
+      } else {
+        await loggInn(epost, passord);
+      }
       onSuccess?.();
     } catch (err) {
       setFeil(err instanceof Error ? err.message : "Innlogging feilet. Sjekk e-post og passord.");
@@ -84,12 +94,14 @@ export function LoginForm({
         {laster ? "Logger inn..." : "Logg inn"}
       </Button>
 
-      <p className="text-center text-sm text-gray-600">
-        Har du ikke konto?{" "}
-        <a href={registrerUrl} className="text-blue-600 hover:underline">
-          Opprett konto
-        </a>
-      </p>
+      {registrerUrl && (
+        <p className="text-center text-sm text-gray-600">
+          Har du ikke konto?{" "}
+          <a href={registrerUrl} className="text-blue-600 hover:underline">
+            Opprett konto
+          </a>
+        </p>
+      )}
     </form>
   );
 }
