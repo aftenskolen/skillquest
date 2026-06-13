@@ -5,3 +5,6 @@ export { Badge } from "./components/Badge";
 export { Input } from "./components/Input";
 export { Label } from "./components/Label";
 export { Skeleton } from "./components/Skeleton";
+export { LoginForm } from "./components/LoginForm";
+export { RegisterForm } from "./components/RegisterForm";
+export { UserMenu } from "./components/UserMenu";

@@ -11,7 +11,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.3.0",
-    "lucide-react": "^0.370.0"
+    "lucide-react": "^0.370.0",
+    "@skillquest/auth": "workspace:*",
+    "@skillquest/db": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
