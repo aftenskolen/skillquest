@@ -91,6 +91,7 @@ export default async function LeksjonSide({ params }: Props) {
         leksjonFullfort={progresjon?.status === "fullfort"}
         kursSlug={params.slug}
         leksjonId={params.leksjonId}
+        xpVerdi={(leksjon as { xp_verdi?: number }).xp_verdi ?? 0}
         {...(nesteLeksjonHref ? { nesteLeksjonHref } : {})}
         {...(forrigeLeksjonHref ? { forrigeLeksjonHref } : {})}
       />

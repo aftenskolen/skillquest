@@ -2,11 +2,12 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import type { InnholdsBlokk, TekstBlokkData, VideoBlokkData, MultipleChoiceBlokkData } from "@novolms/db/types";
+import type { InnholdsBlokk, TekstBlokkData, VideoBlokkData, MultipleChoiceBlokkData, H5PBlokkData } from "@novolms/db/types";
 import { BlokkTekst } from "./BlokkTekst";
 import { BlokkVideo } from "./BlokkVideo";
 import { BlokkMultipleChoice } from "./BlokkMultipleChoice";
-import { oppdaterBlokkStatus } from "@/app/kurs/[slug]/leksjon/[leksjonId]/actions";
+import { BlokkH5P } from "./BlokkH5P";
+import { oppdaterBlokkStatus, nullstillProgresjonAction } from "@/app/kurs/[slug]/leksjon/[leksjonId]/actions";
 
 interface Props {
   blokker: InnholdsBlokk[];
@@ -15,6 +16,7 @@ interface Props {
   leksjonFullfort: boolean;
   kursSlug: string;
   leksjonId: string;
+  xpVerdi?: number;
   nesteLeksjonHref?: string;
   forrigeLeksjonHref?: string;
 }
@@ -25,12 +27,13 @@ export function LeksjonViewer({
   initiellBlokkStatus,
   leksjonFullfort: initialLeksjonFullfort,
   kursSlug,
+  xpVerdi = 0,
   nesteLeksjonHref,
   forrigeLeksjonHref,
 }: Props) {
   const [blokkStatus, setBlokkStatus] = useState(initiellBlokkStatus);
   const [leksjonFullfort, setLeksjonFullfort] = useState(initialLeksjonFullfort);
-  const [, startTransition] = useTransition();
+  const [nullstiller, startTransition] = useTransition();
   const router = useRouter();
 
   const krevdeBlokkIds = blokker.filter((b) => b.paakrevd).map((b) => b.id);
@@ -47,6 +50,17 @@ export function LeksjonViewer({
     if (!progresjonId) return;
     startTransition(() => {
       oppdaterBlokkStatus(progresjonId, blokkId, krevdeBlokkIds).then(() => {
+        router.refresh();
+      });
+    });
+  }
+
+  function provIgjen() {
+    if (!progresjonId) return;
+    startTransition(() => {
+      nullstillProgresjonAction(progresjonId).then(() => {
+        setBlokkStatus({});
+        setLeksjonFullfort(false);
         router.refresh();
       });
     });
@@ -74,6 +88,17 @@ export function LeksjonViewer({
                 data={blokk.data as MultipleChoiceBlokkData}
                 fullfort={erFullfort}
                 onFullfort={() => markerBlokk(blokk.id)}
+                progresjonId={progresjonId}
+                blokkId={blokk.id}
+              />
+            )}
+            {blokk.type === "h5p" && (
+              <BlokkH5P
+                data={blokk.data as H5PBlokkData}
+                fullfort={erFullfort}
+                onFullfort={() => markerBlokk(blokk.id)}
+                progresjonId={progresjonId}
+                blokkId={blokk.id}
               />
             )}
           </div>
@@ -81,8 +106,44 @@ export function LeksjonViewer({
       })}
 
       {leksjonFullfort && (
-        <div className="rounded-xl border border-green-200 bg-green-50 px-6 py-4 text-center">
-          <p className="font-semibold text-green-700">✓ Leksjon fullført!</p>
+        <div className="rounded-xl border border-yellow-200 bg-yellow-50 px-6 py-6 text-center space-y-3">
+          <div className="flex justify-center gap-1">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="text-3xl"
+                style={{
+                  display: "inline-block",
+                  animation: "starPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both",
+                  animationDelay: `${i * 0.12}s`,
+                }}
+              >
+                ⭐
+              </span>
+            ))}
+          </div>
+          <p className="font-semibold text-yellow-800">Leksjon fullført!</p>
+          {xpVerdi > 0 && (
+            <span className="inline-block rounded-full bg-yellow-200 px-4 py-1 text-sm font-bold text-yellow-800">
+              +{xpVerdi} XP
+            </span>
+          )}
+          <div>
+            <button
+              onClick={provIgjen}
+              disabled={nullstiller}
+              className="mt-1 text-sm text-yellow-700 underline underline-offset-2 hover:text-yellow-900 disabled:opacity-50"
+            >
+              {nullstiller ? "Nullstiller…" : "Prøv igjen"}
+            </button>
+          </div>
+          <style>{`
+            @keyframes starPop {
+              0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+              70%  { transform: scale(1.3) rotate(5deg); }
+              100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            }
+          `}</style>
         </div>
       )}
 

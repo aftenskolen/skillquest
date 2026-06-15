@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { hentInnloggetBruker } from "@novolms/auth";
 import { createServerClient } from "@novolms/db/server";
-import { KursSidebar, type SidebarModul } from "@/components/KursSidebar";
+import { KursSidebar, type SidebarModul, type SidebarSamling } from "@/components/KursSidebar";
 
 interface Props {
   children: React.ReactNode;
@@ -37,21 +37,31 @@ export default async function KursLayout({ children, params }: Props) {
 
   const { data: paamelding } = await db
     .from("paamelding")
-    .select("id")
+    .select("id, klasse_id")
     .eq("bruker_id", bruker.id)
     .in("status", ["aktiv", "paameldt"])
     .limit(1)
     .maybeSingle();
 
-  const { data: progresjon } = paamelding
-    ? await db
-        .from("leksjon_progresjon")
-        .select("leksjon_id, status")
-        .eq("paamelding_id", paamelding.id)
-    : { data: [] };
+  const [progresjonRes, samlingerRes] = await Promise.all([
+    paamelding
+      ? db
+          .from("leksjon_progresjon")
+          .select("leksjon_id, status")
+          .eq("paamelding_id", paamelding.id)
+      : Promise.resolve({ data: [] }),
+    paamelding?.klasse_id
+      ? db
+          .from("samling")
+          .select("id, dato_tid, type, status")
+          .eq("klasse_id", paamelding.klasse_id)
+          .neq("status", "avlyst")
+          .order("dato_tid")
+      : Promise.resolve({ data: [] }),
+  ]);
 
   const fullforte = new Set(
-    (progresjon ?? [])
+    (progresjonRes.data ?? [])
       .filter((p) => p.status === "fullfort")
       .map((p) => p.leksjon_id)
   );
@@ -86,6 +96,27 @@ export default async function KursLayout({ children, params }: Props) {
       return [{ id: modul.id, tittel: modul.tittel.no, leksjoner }];
     });
 
+  const samlingListe = samlingerRes.data ?? [];
+  const samlingIder = samlingListe.map((s) => s.id);
+
+  const { data: oppgaveTeller } = samlingIder.length > 0
+    ? await db.from("oppgave").select("samling_id").in("samling_id", samlingIder)
+    : { data: [] };
+
+  const oppgavePerSamling = new Map<string, number>();
+  for (const o of oppgaveTeller ?? []) {
+    oppgavePerSamling.set(o.samling_id, (oppgavePerSamling.get(o.samling_id) ?? 0) + 1);
+  }
+
+  const samlinger: SidebarSamling[] = samlingListe.map((s) => ({
+    id: s.id,
+    dato_tid: s.dato_tid,
+    type: s.type,
+    status: s.status,
+    antall_oppgaver: oppgavePerSamling.get(s.id) ?? 0,
+    href: `/kurs/${params.slug}/samlinger/${s.id}`,
+  }));
+
   const kursTittel = (kurs.tittel as unknown as { no: string }).no;
 
   return (
@@ -94,6 +125,7 @@ export default async function KursLayout({ children, params }: Props) {
         kursTittel={kursTittel}
         kursSlug={params.slug}
         moduler={moduler}
+        samlinger={samlinger}
       />
       <main className="flex-1 overflow-y-auto">
         {children}

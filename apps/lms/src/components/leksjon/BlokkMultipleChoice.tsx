@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 import type { MultipleChoiceBlokkData } from "@novolms/db/types";
+import { lagreBesvarelseAction } from "@/app/kurs/[slug]/leksjon/[leksjonId]/actions";
 
 interface Props {
   data: MultipleChoiceBlokkData;
   fullfort: boolean;
   onFullfort: () => void;
+  progresjonId: string | null;
+  blokkId: string;
 }
 
-export function BlokkMultipleChoice({ data, fullfort, onFullfort }: Props) {
+export function BlokkMultipleChoice({ data, fullfort, onFullfort, progresjonId, blokkId }: Props) {
   const [valgt, setValgt] = useState<string | null>(null);
   const [svart, setSvart] = useState(false);
   const [forsok, setForsok] = useState(0);
@@ -17,10 +20,35 @@ export function BlokkMultipleChoice({ data, fullfort, onFullfort }: Props) {
   const riktigAlternativ = data.alternativer.find((a) => a.riktig);
   const erRiktig = valgt === riktigAlternativ?.id;
 
-  function svar() {
+  async function svar() {
     if (!valgt || svart) return;
+    const nyttForsok = forsok + 1;
     setSvart(true);
-    setForsok((f) => f + 1);
+    setForsok(nyttForsok);
+
+    const valgtAlternativ = data.alternativer.find((a) => a.id === valgt);
+
+    if (progresjonId) {
+      await lagreBesvarelseAction(
+        progresjonId,
+        blokkId,
+        {
+          sporsmaal: data.sporsmaal,
+          alternativer: data.alternativer.map((a) => ({
+            id: a.id,
+            tekst: a.tekst,
+            riktig: a.riktig,
+          })),
+        },
+        {
+          valgt_id: valgt,
+          valgt_tekst: valgtAlternativ?.tekst.no ?? "",
+          forsok: nyttForsok,
+        },
+        erRiktig
+      );
+    }
+
     if (erRiktig) {
       onFullfort();
     }

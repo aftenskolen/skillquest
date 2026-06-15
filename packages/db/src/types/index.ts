@@ -113,6 +113,7 @@ export type InnholdLeksjon = {
   innhold_blokker: InnholdsBlokk[]
   tags: string[] | null
   estimert_tid_min: number | null
+  xp_verdi: number
   status: 'utkast' | 'til_review' | 'publisert' | 'arkivert'
   leksjon_type: 'standard' | 'forsterkning' | 'fordypning' | 'adaptiv_alternativ'
   versjon: number
@@ -191,6 +192,15 @@ export type Samling = {
   notat: string | null
 }
 
+export type SamlingOppmote = {
+  id: string
+  samling_id: string
+  bruker_id: string
+  status: 'tilstede' | 'ukjent_fravaer' | 'jobb' | 'godkjent_fravaer'
+  notat: string | null
+  registrert_dato: string
+}
+
 export type Paamelding = {
   id: string
   bruker_id: string
@@ -260,6 +270,7 @@ export type BrukerStreak = {
   dato: string
   xp_opptjent: number
   streak_frys_brukt: boolean
+  innlogging_tildelt: boolean
 }
 
 export type AuditLog = {
@@ -271,6 +282,46 @@ export type AuditLog = {
   ny_verdi: string | null
   endret_av: string | null
   endret_dato: string
+}
+
+export type Oppgave = {
+  id: string
+  samling_id: string
+  klasse_id: string
+  tittel: string
+  beskrivelse: string | null
+  fil_url: string | null
+  opprettet_av: string
+  opprettet_dato: string
+}
+
+export type OppgaveInnlevering = {
+  id: string
+  oppgave_id: string
+  bruker_id: string
+  innhold_tekst: string | null
+  fil_url: string | null
+  innlevert_dato: string
+  tilbakemelding_tekst: string | null
+  tilbakemelding_dato: string | null
+  status: 'levert' | 'rettet'
+}
+
+export type MeldingTrad = {
+  id: string
+  klasse_id: string
+  laerer_id: string
+  deltaker_id: string
+  opprettet_dato: string
+}
+
+export type Melding = {
+  id: string
+  trad_id: string
+  fra_bruker_id: string
+  innhold: string
+  sendt_dato: string
+  lest_dato: string | null
 }
 
 // ── Supabase Database-type (brukes av createClient<Database>) ─────────────────
@@ -341,6 +392,11 @@ export type Database = {
         Insert: MakeInsert<Samling, 'id'>
         Update: Partial<Omit<Samling, 'id'>>
       }
+      samling_oppmote: {
+        Row: SamlingOppmote
+        Insert: MakeInsert<SamlingOppmote, 'id' | 'registrert_dato'>
+        Update: Partial<Omit<SamlingOppmote, 'id' | 'registrert_dato'>>
+      }
       paamelding: {
         Row: Paamelding
         Insert: MakeInsert<Paamelding, 'id' | 'paameldt_dato'>
@@ -375,6 +431,26 @@ export type Database = {
         Row: AuditLog
         Insert: MakeInsert<AuditLog, 'id' | 'endret_dato'>
         Update: Partial<Omit<AuditLog, 'id' | 'endret_dato'>>
+      }
+      oppgave: {
+        Row: Oppgave
+        Insert: MakeInsert<Oppgave, 'id' | 'opprettet_dato'>
+        Update: Partial<Omit<Oppgave, 'id' | 'opprettet_dato'>>
+      }
+      oppgave_innlevering: {
+        Row: OppgaveInnlevering
+        Insert: MakeInsert<OppgaveInnlevering, 'id' | 'innlevert_dato'>
+        Update: Partial<Omit<OppgaveInnlevering, 'id' | 'innlevert_dato'>>
+      }
+      melding_trad: {
+        Row: MeldingTrad
+        Insert: MakeInsert<MeldingTrad, 'id' | 'opprettet_dato'>
+        Update: Partial<Omit<MeldingTrad, 'id' | 'opprettet_dato'>>
+      }
+      melding: {
+        Row: Melding
+        Insert: MakeInsert<Melding, 'id' | 'sendt_dato'>
+        Update: Partial<Omit<Melding, 'id' | 'sendt_dato'>>
       }
     }
     Views: Record<string, never>

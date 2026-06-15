@@ -21,6 +21,7 @@ export type {
   Klasse,
   KlasseRolle,
   Samling,
+  SamlingOppmote,
   Paamelding,
   LeksjonProgresjon,
   LeksjonBesvarelse,
@@ -28,5 +29,9 @@ export type {
   LevelTerskel,
   BrukerStreak,
   AuditLog,
+  Oppgave,
+  OppgaveInnlevering,
+  MeldingTrad,
+  Melding,
   Database,
 } from "./types/index";
